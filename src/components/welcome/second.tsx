@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
 
 export const Second = defineComponent({
-  setup: (props, context) => {
+  setup(props, context) {
     return () => <div>Second</div>;
   },
 });
