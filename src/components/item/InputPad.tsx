@@ -27,12 +27,10 @@ export const InputPad = defineComponent({
 					return
 				}
 			} else if (nString === '0') {
-				if (dotIndex === -1) {
-					// 没有小数点
-					if (refAmount.value === '0') {
-						// 没小数点，但是有0
-						return
-					}
+				// 没有小数点
+				if (refAmount.value === '0') {
+					// 没小数点，但是有0
+					return
 				}
 			} else {
 				if (refAmount.value === '0') {
