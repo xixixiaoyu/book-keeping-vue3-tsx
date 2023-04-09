@@ -1,6 +1,6 @@
 import { defineComponent, PropType, ref } from 'vue'
 import { Icon } from '../../shared/Icon'
-import { time } from '../../shared/time'
+import { Time } from '../../shared/time'
 import s from './InputPad.module.scss'
 import { DatetimePicker, NumberKeyboard, Popup } from 'vant'
 export const InputPad = defineComponent({
@@ -27,10 +27,12 @@ export const InputPad = defineComponent({
 					return
 				}
 			} else if (nString === '0') {
-				// 没有小数点
-				if (refAmount.value === '0') {
-					// 没小数点，但是有0
-					return
+				if (dotIndex === -1) {
+					// 没有小数点
+					if (refAmount.value === '0') {
+						// 没小数点，但是有0
+						return
+					}
 				}
 			} else {
 				if (refAmount.value === '0') {
@@ -128,7 +130,7 @@ export const InputPad = defineComponent({
 					<span class={s.date}>
 						<Icon name="date" class={s.icon} />
 						<span>
-							<span onClick={showDatePicker}>{time(refDate.value).format()}</span>
+							<span onClick={showDatePicker}>{new Time(refDate.value).format()}</span>
 							<Popup position="bottom" v-model:show={refDatePickerVisible.value}>
 								<DatetimePicker
 									value={refDate.value}
