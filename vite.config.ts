@@ -18,4 +18,11 @@ export default defineConfig({
 			resolves: [VantResolve()],
 		}),
 	],
+	server: {
+		proxy: {
+			'/api/v1': {
+				target: 'https://mangosteen2.hunger-valley.com',
+			},
+		},
+	},
 })
