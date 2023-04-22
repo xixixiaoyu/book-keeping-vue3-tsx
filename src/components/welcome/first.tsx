@@ -1,6 +1,5 @@
 import s from './welcome.module.scss'
 import { FunctionalComponent } from 'vue'
-
 export const First: FunctionalComponent = () => {
 	return (
 		<div class={s.card}>
