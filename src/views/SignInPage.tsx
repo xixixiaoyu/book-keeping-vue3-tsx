@@ -8,6 +8,7 @@ import { Form, FormItem } from '../shared/Form'
 import { history } from '../shared/history'
 import { http } from '../shared/Http'
 import { Icon } from '../shared/Icon'
+import { refreshMe } from '../shared/me'
 import { hasError, validate } from '../shared/validate'
 import s from './SignInPage.module.scss'
 export const SignInPage = defineComponent({
@@ -43,6 +44,7 @@ export const SignInPage = defineComponent({
 				localStorage.setItem('jwt', response.data.jwt)
 				// router.push('/sign_in?return_to='+ encodeURIComponent(route.fullPath))
 				const returnTo = route.query.return_to?.toString()
+				refreshMe()
 				router.push(returnTo || '/')
 			}
 		}
@@ -72,7 +74,6 @@ export const SignInPage = defineComponent({
 								<Icon class={s.icon} name="mangosteen" />
 								<h1 class={s.appName}>山竹记账</h1>
 							</div>
-							<div>{JSON.stringify(formData)}</div>
 							<Form onSubmit={onSubmit}>
 								<FormItem
 									label="邮箱地址"
