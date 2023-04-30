@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, onUpdated, PropType, ref, watch } from 'vue'
+import { defineComponent, onMounted, PropType, ref, watch } from 'vue'
 import s from './LineChart.module.scss'
 import * as echarts from 'echarts'
 import { Time } from '../../shared/time'
