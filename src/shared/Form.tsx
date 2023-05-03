@@ -3,7 +3,7 @@ import { computed, defineComponent, PropType, ref, VNode } from 'vue'
 import { Button } from './Button'
 import { EmojiSelect } from './EmojiSelect'
 import s from './Form.module.scss'
-import { getFriendlyError } from './getFriendlyError.tsx'
+import { getFriendlyError } from './getFriendlyError'
 import { Time } from './time'
 export const Form = defineComponent({
 	props: {
@@ -26,7 +26,7 @@ export const FormItem = defineComponent({
 			type: String,
 		},
 		modelValue: {
-			type: [String, Number],
+			type: [String, Number, Date],
 		},
 		type: {
 			type: String as PropType<'text' | 'emojiSelect' | 'date' | 'validationCode' | 'select'>,
@@ -124,7 +124,7 @@ export const FormItem = defineComponent({
 							/>
 							<Popup position="bottom" v-model:show={refDateVisible.value}>
 								<DatetimePicker
-									value={props.modelValue}
+									modelValue={props.modelValue ? new Date(props.modelValue) : new Date()}
 									type="date"
 									title="选择年月日"
 									onConfirm={(date: Date) => {
